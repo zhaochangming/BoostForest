@@ -49,7 +49,7 @@ class ridge_clip:
 
 
 class BoostTree(BaseEstimator):
-    def __init__(self, max_leafs=5, node_model='ridge_clip', min_sample_leaf_list=None, reg_alpha_list=None, max_depth=None, random_state=0):
+    def __init__(self, max_leafs=5, node_model='Ridge', min_sample_leaf_list=None, reg_alpha_list=None, max_depth=None, random_state=0):
         if min_sample_leaf_list is None:
             min_sample_leaf_list = 1
         if reg_alpha_list is None:
@@ -257,7 +257,7 @@ class BoostTree(BaseEstimator):
 
     def __fit_model(self, X, y, output=None, premodel=None, task=None):
         w, bias = None, None
-        if self.node_model == 'ridge_clip':
+        if self.node_model == 'Ridge':
             model = ridge_clip(self.reg_alpha_)
         else:
             model = ridge_clip(self.reg_alpha_)

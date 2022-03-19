@@ -6,7 +6,7 @@ This page contains parameters tuning guides for different scenarios.
 For Better Accuracy
 -------------------
 
--  Use large ``n_nodes_H`` and ``n_groups_Z`` (may be slower)
+-  Use large ``max_leafs`` and ``max_depth`` (may be slower)
 
 -  Use bigger training data
 
@@ -14,12 +14,11 @@ For Better Accuracy
 Deal with Over-fitting
 ----------------------
 
--  Use more ``k_neighbors`` for semi-supervised learning
+- Use Bagging to generate more BoostTrees
 
 -  Use bigger training data
 
--  Try ``reg_alpha``, ``reg_lambda``, ``reg_laplacian`` and ``sigma`` for regularization
+-  Try ``min_sample_leaf_list``, ``reg_alpha_list`` and ``node_model`` for regularization
 
--  Try ``n_nodes_Z`` for generating suitable feature nodes
 
 
