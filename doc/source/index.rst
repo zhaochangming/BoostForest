@@ -18,7 +18,7 @@ Welcome to BoostForest's documentation!
 References
 ----------
 
-[1] C. Zhao, D. Wu, J. Huang, Y. Yuan, and H. Zhang, “Boosttree and boostforest for ensemble learning,” IEEE TPAMI, submitted.
+[1] C. Zhao, D. Wu, J. Huang, Y. Yuan, H. Zhang, R. Peng and Z. Shi, “Boosttree and boostforest for ensemble learning,” IEEE Trans. on Pattern Analysis and Machine Intelligence, submitted, 2022.
 
 [2] Y. Wang and I. H. Witten, “Induction of model trees for predicting continuous classes,” in Proc. 9th European Conf. on Machine Learning, Prague, Czech Republic, 1997.
 
