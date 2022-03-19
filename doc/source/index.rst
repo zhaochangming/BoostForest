@@ -10,12 +10,13 @@ Welcome to BoostForest's documentation!
    :maxdepth: 1
    :caption: Contents:
 
+   Python Quick Start <Python-Intro>
+   Parameters Tuning <Parameters-Tuning>
    Python API <BoostForest>
    Python Examples <Demo>
+
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

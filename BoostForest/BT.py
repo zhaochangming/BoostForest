@@ -10,6 +10,7 @@ from sklearn.base import BaseEstimator, ClassifierMixin, RegressorMixin
 from sklearn.utils.validation import check_X_y, check_array, check_is_fitted
 from sklearn.utils import column_or_1d
 from sklearn.preprocessing import LabelBinarizer
+import joblib
 
 sys.setrecursionlimit(100000000)
 _MACHINE_EPSILON = np.finfo(np.float64).eps
@@ -59,6 +60,16 @@ class BoostTree(BaseEstimator):
         self.reg_alpha_list = reg_alpha_list
         self.max_depth = max_depth
         self.random_state = random_state
+
+    def save_model(self, file):
+        """
+        Parameters
+        ----------
+        file: str
+            Controls the filename.
+        """
+        check_is_fitted(self, ['tree_'])
+        joblib.dump(self, filename=file)
 
     def _create_node(self, output, depth, container, loss_node, model_node=None, sample_index=None):
         node = {
