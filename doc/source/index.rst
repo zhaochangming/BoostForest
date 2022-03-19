@@ -11,7 +11,7 @@ Welcome to BoostForest's documentation!
    :caption: Contents:
 
    Python API <BoostForest>
-
+   Python Examples <Demo>
 
 Indices and tables
 ==================
