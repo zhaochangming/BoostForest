@@ -1,6 +1,6 @@
 Welcome to BoostForest's documentation!
 =======================================
-**BoostForest** [1] is a ensemble learning approach that bases on model tree [2], boosting [3] and bootstrap aggregating (Bagging) [4]. It is designed to be efficient with the following advantages:
+**BoostForest** [1] is an ensemble learning approach that bases on model tree [2], boosting [3] and bootstrap aggregating (Bagging) [4]. It is designed to be efficient with the following advantages:
 
 
 - Support of classification and regression in supervised learning.
