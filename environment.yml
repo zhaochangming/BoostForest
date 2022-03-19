@@ -1,0 +1,5 @@
+name: BoostForest
+dependencies:
+  - numpy
+  - scipy
+  - scikit-learn
