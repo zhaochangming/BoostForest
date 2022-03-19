@@ -12,7 +12,7 @@ Our primary documentation is at https://boostforest.readthedocs.io and is genera
 Next you may want to read:
 - [**APIs & Parameters**](https://boostforest.readthedocs.io/en/latest/BoostForest.html) is an exhaustive list of customization you can make.
 - [**Parameters Tuning**](https://boostforest.readthedocs.io/en/latest/Parameters-Tuning.html) is an exhaustive list of customization you can make.
-- [**Examples**](https://boostforest.readthedocs.io/en/latest/Python-Examples.html) showing command line usage of common tasks.
+- [**Examples**](https://boostforest.readthedocs.io/en/latest/Demo.html) showing command line usage of common tasks.
 
 ## References
 
