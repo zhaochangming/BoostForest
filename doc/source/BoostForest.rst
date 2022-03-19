@@ -1,6 +1,6 @@
 Python-package Introduction
 ===========================
-This page contains parameters
+This page contains parameters.
 
 
 BoostForest.BoostTreeClassifier
