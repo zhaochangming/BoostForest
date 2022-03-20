@@ -672,6 +672,21 @@ class BoostTreeClassifier(ClassifierMixin, BoostTree):
         return self.classes_[indices]
 
     def predict_proba(self, X):
+        """
+            Predict class probabilities for X.
+
+            Parameters
+            ----------
+            X : {array-like, sparse matrix} of shape (n_samples, n_features)
+                The training input samples. Sparse matrices are accepted only if
+                they are supported by the base estimator.
+
+            Returns
+            -------
+            p : ndarray of shape (n_samples, n_classes)
+                The class probabilities of the input samples. The order of the
+                classes corresponds to that in the attribute :term:`classes_`.
+        """
         check_is_fitted(self, ['tree_'])
         X = check_array(X)
         assert self.tree_ is not None
