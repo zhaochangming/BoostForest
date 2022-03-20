@@ -474,7 +474,7 @@ class BoostTreeRegressor(RegressorMixin, BoostTree):
 
     def predict(self, X):
         """
-            Predict class labels for samples in X.
+            Return the predicted value for each sample.
 
             Parameters
             ----------
@@ -647,7 +647,7 @@ class BoostTreeClassifier(ClassifierMixin, BoostTree):
 
     def predict(self, X):
         """
-            Return the predicted value for each sample.
+            Predict class labels for samples in X.
 
             Parameters
             ----------
