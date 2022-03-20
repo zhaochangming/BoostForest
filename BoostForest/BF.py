@@ -4,7 +4,7 @@ from .BT import BoostTreeClassifier, BoostTreeRegressor
 
 class BoostForestClassifier(BaggingClassifier):
     """
-        Construct a BoostForestClassifier.
+        Construct a BoostForestClassifier, referred to ``sklearn.ensemble.BaggingClassifier``.
 
         Parameters
         ----------
@@ -90,7 +90,7 @@ class BoostForestClassifier(BaggingClassifier):
 
 class BoostForestRegressor(BaggingRegressor):
     """
-        Construct a BoostForestClassifier.
+        Construct a BoostForestClassifier, referred to ``sklearn.ensemble.BaggingRegressor``.
 
         Parameters
         ----------
