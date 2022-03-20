@@ -53,13 +53,13 @@ For instance:
 
    .. code:: python
 
-       param = {'max_leafs': 5, 'node_model': 'Ridge', 'min_sample_leaf_list':5, 'reg_alpha_list': 0.1, 'max_depth': None, 'random_state':0}
+       param = {'max_leafs': 5, 'node_model': 'Ridge', 'min_sample_leaf_list':5, 'reg_alpha_list': 0.1, 'max_depth': None, 'elm_hidden_layer_nodes': 100, 'random_state':0}
 
 -  When min_sample_leaf_list and reg_alpha_list are lists:
 
    .. code:: python
 
-       param = {'max_leafs': 5, 'node_model': 'Ridge', 'min_sample_leaf_list': [5, 6, 7], 'reg_alpha_list': [0.1, 0.5, 1.0], 'max_depth': None, 'random_state':0}
+       param = {'max_leafs': 5, 'node_model': 'Ridge', 'min_sample_leaf_list': [5, 6, 7], 'reg_alpha_list': [0.1, 0.5, 1.0], 'max_depth': None, 'elm_hidden_layer_nodes': 100, 'random_state':0}
 
 
 Training

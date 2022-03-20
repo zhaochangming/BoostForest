@@ -9,7 +9,7 @@ from sklearn.utils.estimator_checks import check_estimator
 from sklearn.base import BaseEstimator, ClassifierMixin, RegressorMixin
 from sklearn.utils.validation import check_X_y, check_array, check_is_fitted
 from sklearn.utils import column_or_1d
-from sklearn.preprocessing import LabelBinarizer
+from sklearn.preprocessing import LabelBinarizer, StandardScaler
 import joblib
 
 sys.setrecursionlimit(100000000)
@@ -48,18 +48,66 @@ class ridge_clip:
                 return self.model.predict(X.reshape(1, -1))
 
 
+class elm_clip:
+    def __init__(self, alpha=None, hidden_layer_nodes=None):
+        self.alpha = alpha
+        self.hidden_layer_nodes = hidden_layer_nodes
+        self.upper_bounds = None
+        self.lower_bounds = None
+        self.task = None
+        self.scaler = StandardScaler()
+
+    def fit(self, Xn, yn, weight=None, task=None):
+        X = np.copy(Xn)
+        y = np.copy(yn)
+        self.task = task
+        if task == 'reg':
+            self.upper_bounds = np.max(y)
+            self.lower_bounds = np.min(y)
+        input_dimension = X.shape[1]
+        self.a = np.random.normal(0, 1, (input_dimension, self.hidden_layer_nodes))
+        self.b = np.random.normal(0, 1)
+        H = X.dot(self.a) + self.b
+        H = self.scaler.fit_transform(H)
+        H = expit(H)
+        self.model = Ridge(alpha=self.alpha)
+        self.model.fit(H, y, weight)
+
+    def predict(self, Xn):
+        X = np.copy(Xn)
+        if X.ndim != 2:
+            X = X.reshape(1, -1)
+        H = X.dot(self.a) + self.b
+        H = self.scaler.transform(H)
+        H = expit(H)
+        if self.task == 'reg':
+            if X.ndim == 2:
+                return np.clip(self.model.predict(H), self.lower_bounds, self.upper_bounds)
+            else:
+                return np.clip(self.model.predict(H.reshape(1, -1)), self.lower_bounds, self.upper_bounds)
+        else:
+            if X.ndim == 2:
+                return self.model.predict(H)
+            else:
+                return self.model.predict(H.reshape(1, -1))
+
+
 class BoostTree(BaseEstimator):
-    def __init__(self, max_leafs=5, node_model='Ridge', min_sample_leaf_list=None, reg_alpha_list=None, max_depth=None, random_state=0):
+    def __init__(self, max_leafs=5, node_model='Ridge', min_sample_leaf_list=None, reg_alpha_list=None, max_depth=None,
+                 elm_hidden_layer_nodes=None, random_state=0):
         if min_sample_leaf_list is None:
             min_sample_leaf_list = 1
         if reg_alpha_list is None:
             reg_alpha_list = 0.1
+        if elm_hidden_layer_nodes is None:
+            elm_hidden_layer_nodes = 100
         self.max_leafs = max_leafs
         self.node_model = node_model
         self.min_sample_leaf_list = min_sample_leaf_list
         self.reg_alpha_list = reg_alpha_list
         self.max_depth = max_depth
         self.random_state = random_state
+        self.elm_hidden_layer_nodes = elm_hidden_layer_nodes
 
     def save_model(self, file):
         """
@@ -259,6 +307,8 @@ class BoostTree(BaseEstimator):
         w, bias = None, None
         if self.node_model == 'Ridge':
             model = ridge_clip(self.reg_alpha_)
+        elif self.node_model == 'ELM':
+            model = elm_clip(self.reg_alpha_, self.elm_hidden_layer_nodes_)
         else:
             model = ridge_clip(self.reg_alpha_)
         if output is None:
@@ -352,6 +402,10 @@ class BoostTreeRegressor(RegressorMixin, BoostTree):
             self.reg_alpha_ = np.random.choice(self.reg_alpha_list, 1)[0]
         else:
             self.reg_alpha_ = self.reg_alpha_list
+        if isinstance(self.elm_hidden_layer_nodes, list):
+            self.elm_hidden_layer_nodes_ = np.random.choice(self.elm_hidden_layer_nodes, 1)[0]
+        else:
+            self.elm_hidden_layer_nodes_ = self.elm_hidden_layer_nodes
         self.train_X = X
         self.train_y = y
         n_samples = len(self.train_X)
@@ -444,6 +498,10 @@ class BoostTreeClassifier(ClassifierMixin, BoostTree):
             self.reg_alpha_ = np.random.choice(self.reg_alpha_list, 1)[0]
         else:
             self.reg_alpha_ = self.reg_alpha_list
+        if isinstance(self.elm_hidden_layer_nodes, list):
+            self.elm_hidden_layer_nodes_ = np.random.choice(self.elm_hidden_layer_nodes, 1)[0]
+        else:
+            self.elm_hidden_layer_nodes_ = self.elm_hidden_layer_nodes
         self._label_binarizer = LabelBinarizer(pos_label=1, neg_label=0)
         Y = self._label_binarizer.fit_transform(y)
         if not self._label_binarizer.y_type_.startswith('multilabel'):
