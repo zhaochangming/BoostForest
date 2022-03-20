@@ -363,16 +363,22 @@ class BoostTreeRegressor(RegressorMixin, BoostTree):
         ----------
         max_leafs : int, optional (default=5)
             Maximum tree leaves for BoostTree.
+
         node_model : str, ['Ridge', 'ELM']
             Controls the node model.
+
         min_sample_leaf_list : int or list (default=1)
             Controls the minimum number of data needed in a leaf.
+
         reg_alpha_list : float, optional (default=0.1)
             L2 regularization term on weights.
+
         max_depth : int, optional (default=None)
             Maximum tree depth for BoostTree, None means no limit.
+
         elm_hidden_layer_nodes : int or list (default=100)
             Controls the number of ELM's hidden layer nodes, when using ELM as the node model.
+
         random_state : int, default=0
                         Controls the randomness of the estimator.
     """
@@ -467,16 +473,22 @@ class BoostTreeClassifier(ClassifierMixin, BoostTree):
         ----------
         max_leafs : int, optional (default=5)
             Maximum tree leaves for BoostTree.
+
         node_model : str, ['Ridge', 'ELM']
             Controls the node model.
+
         min_sample_leaf_list : int or list (default=1)
             Controls the minimum number of data needed in a leaf.
+
         reg_alpha_list : float, optional (default=0.1)
             L2 regularization term on weights.
+
         max_depth : int, optional (default=None)
             Maximum tree depth for BoostTree, None means no limit.
+
         elm_hidden_layer_nodes : int or list (default=100)
             Controls the number of ELM's hidden layer nodes, when using ELM as the node model.
+
         random_state : int, default=0
                         Controls the randomness of the estimator.
     """
