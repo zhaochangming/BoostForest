@@ -417,6 +417,22 @@ class BoostTreeRegressor(RegressorMixin, BoostTree):
                 return self._predict_x(node["children"]["right"], x, y_pred_x)
 
     def fit(self, X, y):
+        """
+            Build a BoostTree model from the training set (X, y).
+
+            Parameters
+            ----------
+            X : {ndarray, sparse matrix} of shape (n_samples, n_features)
+                Training data.
+
+            y : ndarray of shape (n_samples,)
+                Target values.
+
+            Returns
+            -------
+            self : object
+                Instance of the estimator.
+        """
         np.random.seed(self.random_state)
         y = column_or_1d(y, warn=True)
         X, y = check_X_y(X, y, dtype=[np.float64, np.float32], multi_output=True, y_numeric=True)
@@ -457,6 +473,19 @@ class BoostTreeRegressor(RegressorMixin, BoostTree):
         return self
 
     def predict(self, X):
+        """
+            Predict class labels for samples in X.
+
+            Parameters
+            ----------
+            X : array_like or sparse matrix, shape (n_samples, n_features)
+                Samples.
+
+            Returns
+            -------
+            C : array, shape [n_samples]
+                Predicted class label per sample.
+        """
         check_is_fitted(self, ['tree_'])
         X = check_array(X)
         assert self.tree_ is not None
@@ -539,6 +568,22 @@ class BoostTreeClassifier(ClassifierMixin, BoostTree):
                 return self._predict_x(node["children"]["right"], x, y_pred_x)
 
     def fit(self, X, y):
+        """
+            Build a BoostTree model from the training set (X, y).
+
+            Parameters
+            ----------
+            X : {ndarray, sparse matrix} of shape (n_samples, n_features)
+                Training data.
+
+            y : ndarray of shape (n_samples,)
+                Target values.
+
+            Returns
+            -------
+            self : object
+                Instance of the estimator.
+        """
         np.random.seed(self.random_state)
         self.leaf_num_ = 1
 
@@ -601,6 +646,19 @@ class BoostTreeClassifier(ClassifierMixin, BoostTree):
         return self._label_binarizer.classes_
 
     def predict(self, X):
+        """
+            Return the predicted value for each sample.
+
+            Parameters
+            ----------
+            X : array_like or sparse matrix, shape (n_samples, n_features)
+                Samples.
+
+            Returns
+            -------
+            C : array, shape (n_samples,)
+                Returns predicted values.
+        """
         check_is_fitted(self, ['tree_'])
         X = check_array(X)
         assert self.tree_ is not None
