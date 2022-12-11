@@ -7,7 +7,7 @@
 
 ## Get Started and Documentation
 
-Our primary documentation is at https://boostforest.readthedocs.io and is generated from this repository. If you are new to BoostForest, follow [the installation instructions](https://boostforest.readthedocs.io/en/latest/Python-Intro.html) on that site. The preferred way to install MVBLS is via pip from [Pypi](https://pypi.org/project/BoostForest).
+Our primary documentation is at https://boostforest.readthedocs.io and is generated from this repository. If you are new to BoostForest, follow [the installation instructions](https://boostforest.readthedocs.io/en/latest/Python-Intro.html) on that site. 
 
 Next you may want to read:
 - [**APIs & Parameters**](https://boostforest.readthedocs.io/en/latest/BoostForest.html) is an exhaustive list of customization you can make.
