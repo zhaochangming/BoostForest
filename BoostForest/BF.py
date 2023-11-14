@@ -86,6 +86,12 @@ class BoostForestClassifier(BaggingClassifier):
                                                                       min_sample_leaf_list=min_sample_leaf_list,
                                                                       reg_alpha_list=reg_alpha_list, max_depth=max_depth,
                                                                       elm_hidden_layer_nodes=elm_hidden_layer_nodes), **kwargs)
+        self.elm_hidden_layer_nodes = self.base_estimator.elm_hidden_layer_nodes
+        self.max_depth = self.base_estimator.max_depth
+        self.max_leafs = self.base_estimator.max_leafs
+        self.min_sample_leaf_list = self.base_estimator.min_sample_leaf_list
+        self.node_model = self.base_estimator.node_model
+        self.reg_alpha_list = self.base_estimator.reg_alpha_list
 
 
 class BoostForestRegressor(BaggingRegressor):
@@ -171,3 +177,9 @@ class BoostForestRegressor(BaggingRegressor):
                                                                     min_sample_leaf_list=min_sample_leaf_list,
                                                                     reg_alpha_list=reg_alpha_list, max_depth=max_depth,
                                                                     elm_hidden_layer_nodes=elm_hidden_layer_nodes), **kwargs)
+        self.elm_hidden_layer_nodes = self.base_estimator.elm_hidden_layer_nodes
+        self.max_depth = self.base_estimator.max_depth
+        self.max_leafs = self.base_estimator.max_leafs
+        self.min_sample_leaf_list = self.base_estimator.min_sample_leaf_list
+        self.node_model = self.base_estimator.node_model
+        self.reg_alpha_list = self.base_estimator.reg_alpha_list
