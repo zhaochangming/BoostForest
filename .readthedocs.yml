@@ -9,5 +9,5 @@ build:
 
 # Build documentation in the docs/ directory with Sphinx
 sphinx:
-  configuration: docs/source/conf.py
+  configuration: doc/source/conf.py
 requirements_file: requirements.txt
