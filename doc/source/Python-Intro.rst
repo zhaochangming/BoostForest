@@ -13,7 +13,7 @@ This document gives a basic walk-through of BoostForest Python-package.
 
 -  `Python Examples <Python-Examples.html>`__
 
-Install
+Install (in the future)
 -------
 
 The preferred way to install BoostForest is via pip from `Pypi <https://pypi.org/project/BoostForest>`__:
